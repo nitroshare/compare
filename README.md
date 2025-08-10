@@ -22,5 +22,10 @@ func TestSomething(t *testing.T) {
 
     // ...and in this case they should not
     compare.Compare(t, 1, 2, false)
+
+    // Functions are a special exception - they cannot be directly compared
+    // with Compare, so a separate function is provided that will work in
+    // most circumstances:
+    compare.CompareFn(t, testing.Init, testing.Init, true)
 }
 ```
